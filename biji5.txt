@@ -1,0 +1,158 @@
+1.复杂查询——聚合查询/分组查询
+示例：查询出所有员工的数量
+SELECT COUNT (eid) FROM emp;
+练习：使用员工的姓名获取员工的数量
+select count(ename) from emp;
+练习：使用员工部门编号获取员工数量
+select count(deptId) from emp;
+select count(*) from emp; #15 推荐写法
+函数：功能体，接收若干个数据，返回特定的结果 ）——饺子机
+聚合函数
+count()/sum()/AVG()/MAX()/min()
+练习：查询出所有员工工资的总和
+SELECT SUM(salary)FROM emp;
+练习：查询出所有男员工的平均工资
+select AVG(salary) from emp where sex=1;
+select sum(salary)/count(*) 平均工资 from emp where sex=1;
+练习：查询工资最高的员工的工资
+select MAX(salary) from emp;
+练习：查询工资最低的员工的工资
+select MIN(salary) from emp;
+练习：查询年龄最大的员工的生日
+select MIN(birthday),ename,eid from emp;
+分组查询：只能查询分组条件和聚合函数
+示例：查询出每个部门员工的最高工资
+select deptId,max(salary) from emp group by deptId;
+练习：查询出男女员工的平均工资，最高工资，最低工资
+select sex,AVG(salary),MAX(salary),MIN(salary) from emp group by sex;
+YEAR() 获取日期中的年份
+MONTH()  获取日期中的月份
+示例：查询1991年出生的员工
+SELECT * FROM emp where YEAR(birthday)="1991";
+示例：查询3月份出生的员工
+SELECT * FROM emp where month(birthday)="3";
+复杂查询——子查询
+本质上就是一个SQL语句的查询结果作为另一个SQL语句的查询条件
+示例：查询出研发部员工的所有信息
+步骤1：查询研发部的部门编号
+SELECT did FROM dept where dname="研发部";#10
+步骤2：使用部门编号查询员工——10
+SELECT * FROM emp Where deptId=10;
+综合: SELECT * FROM emp where deptId=(SELECT did FROM dept where dname="研发部");
+练习：查询比tom工资高的员工所有信息
+select salary from emp where ename="tom";
+select * from emp where salary>6000;
+综合：select * from emp where salary>(select salary from emp where ename="tom");
+练习：查询和tom同一年出生的员工
+select birthday from emp where ename="tom";
+select * from emp where year(birthday)="1990";
+select * from emp where year(birthday)=(select year(birthday) from emp where ename="tom");
+3.复杂查询——多表查询
+示例：查询出所有员工的姓名及其所在部门名称
+select ename,dname FROM emp,dept;
+笛卡尔积!
+如何避免笛卡尔积，在多表查询添加条件。
+select ename,dname FROM emp,dept WHERE deptId=did
+上述语法无法查询出没有部门的员工，也不能查询没有员工的部门——sql92
+（1）内连接 INNER...JOIN...ON ——和之前的结果一样
+    SELECT ename,dname FROM emp INNER JOIN dept ON
+deptId=did;
+（2）左外连接 LEFT OUTER JOIN...ON
+SELECT ename,dname FROM emp LEFT OUTER JOIN dept
+ON deptId=did;
+查询结果是左侧表中所有的记录，即使右侧没有对应的记录。
+OUTER 可以省略
+（3）右外连接
+SELECT ename,dname FROM emp RIGHT  JOIN dept
+ON deptId=did;
+显示右侧表中所有的记录，OUTER可以省略
+（4）全连接 FULL JOIN
+显示左侧和右侧表中所有的记录——MySQL不支持
+mysql中的全连接
+(select ename,dname FROM emp LEFT JOIN dept ON deptId=did)
+UNION
+(select ename,dname FROMN emp RIGHT JOIN dept ON deptId-did);
+UNION合并相同的记录
+UNION ALL 不合并相同的记录
+
+4.项目中如何保存日期、时间
+2018-12-6 14:40:30
+2018年12月6日   2018/12/6   12/6/2018
+存储的是距离计算机元年（1970-1-1）的毫秒数  （1s=1000ms）
+48*365*24*60*1000
+1513728000000  使用BIGINT 的列类型
+学习一门语言的基础步骤
+（1）了解背景知识：历史、现状、特点、应用场景
+（2）搭建开发环境：编写 hello  world
+（3）变量和常量
+（4）数据类型
+（5）运算符
+（6）逻辑结构
+（7）通用小程序
+（8）函数和对象
+（9）第三方库、框架
+（10）实用的项目
+6.JS概述
+（1）发展历史
+1995年，JS最早出现在netscape 浏览器中
+2009年,JS遵循CommonJS规范，开始向服务器端发展
+（2）特点
+弱类型语言:变量中可以赋任何类型的数据，这也是弱类型语言特点
+解释型语言，编译一行、执行一行
+跨平台
+基于对象
+（3）应用领域
+网页中的交互效果
+移动App
+web服务器
+7.搭建JS开发环境
+浏览器中，内置的JS解释器
+服务器中，需要安装NODEJS
+https://nodejs.org  NODEJS官网
+运行方式
+   NODEJS下
+    创建js文件
+    node   c:/xampp/..../02.js
+(2)浏览器下
+      创建js文件
+创建html文件
+	<script src="02.js"></script>
+双击打开html
+8.JS语法规范
+console注意大小写区分
+（1）区分大小写
+（2）每行结束分号可加可不加，习惯上都加
+（3）分为单行注释（//...）和多行注释（/*....*/）
+9.变量
+变量就是用于存储数据的容器
+x=1   y=2
+（1）声明变量
+使用关键字  var
+var x=1;
+练习：声明多个变量，分别存储一个员工的编号、姓名、性别、生日、工资、部门编号。
+（2）变量的命名规则
+      可以使用字母、美元符号、下划线、数字、不能以数字开头
+不能使用关键字和保留字作为变量名
+userName  isOnsale  驼峰命名
+user_name  is_onsale   下划线命名
+var   isOnsale;
+console.log(isOnsale)
+声明：一次声明多个变量
+var chinese=90,math=95；
+多个变量之间用逗号隔开。
+（4）声明变量未赋值
+var a;
+a的值为undefined（未定义）：
+10.常量
+一旦声明不能再重新赋值。
+例如：圆周率、春节、中秋节...
+const
+const pi=3.14;
+练习：使用变量存储半径，使用常量存储圆周率，计算圆的面积和周长
+
+课后任务：
+（1）复习今天内容，删除代码，根据注释重新编写
+（2）练习：
+      使用变量保存圆的半径为5，常量保存圆周率为3.14，分别计算30度/60度的周长。
+      使用变量保存商品1的单价12.5和数量7，商品2的单价18和数量3.5，计算商品的总价。
+      预习js的数据类型
