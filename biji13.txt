@@ -1,0 +1,90 @@
+数组  push()/pop()/unshift()/shift()
+二维数组  数组中每个元素还是数组   [ [],[],[],[],[] ]
+字符串对象  newString(12)
+转义字符  \   \'  \n  \t
+toUpperCase()/toLowerCase()/charAt/charCodeAt()
+indexOf()(第一次出现的下标)/lastIndexOf()  如果找不到 返回-1
+截取字符串
+slice(start,end)/substr(start,count)
+split("|")
+匹配模式，
+	replace(/china/ig,value2)    查找替换
+	math(/china/ig)   数组
+	search(/china/i)   返回下标
+"hello"  length 
+
+（1）Math 对象
+	abs()  取绝对值
+	floor()   向下取整
+	ceil()   向上取整
+	round()   四舍五入取整
+	max()    取一组数字的最大值
+	min()   取一组数字的最小值
+	pow(x,y)  取x的y次幂
+	PI  取圆周率
+	random()   取随机数   范围>=0    <1
+2.通过Unicode码获取对应字符
+String.fromCharCode(编码)
+
+
+3.Date对象
+用于对日期时间进行存储和计算
+（1）创建Date对象
+new Date("2018/12/25 10:30:50")
+new Date(2018,10,25,10,30,50) //第2个参数月份范围0~11  (如12月输11月)
+new Date()  存储当前的系统时间
+new Date(1000*60*60*24)  存储的是距离计算机元年的毫秒数对应的日期时间
+（2）获取Date对象中的日期时间
+getFullYear/Month/Date/Hours/Minutes/Seconds/Milliseconds(毫秒)/Dar(星期)/Time(距离）
+星期日~星期六  范围0~6
+（3）转为本地日期时间格式
+	toLocaleString()  //年-月-日   时:分:秒
+	toLocaleDateString()  //年-月-日
+	toLocaleTimeString()  //时:分:秒
+（4）设置日期时间
+	setFullYear/Month/Date/Hours/Minutes/Seconds/Milliseconds/Time
+	setTime  设置距离计算机元年的毫秒数，一旦设置后，所有的日期时间都会受到影响。
+	练习：创建Date对象，保存员工的入职时间"2018-11-16",3年后合同到期，合同到期前1个月续签合同，如果续签时间是周末，提前到周五。提前一周通知人力准备续签(提醒时间)。
+	分别打印入职时间、到期时间、续签时间、提醒时间
+	
+	练习：计算当前时间距离2018年圣诞节还有？天？时？分？秒
+（3）Number对象
+	new Number(数据)
+	创建Number对象，同时将数据转为数值型。
+	toFixed(n)  保留小数点后n位
+	toString(n)   将数值型转为字符串类型，n设置转换的进制(2,8,16)
+Number.MAX_VALUE  获取计算机能存储的最大数值
+Number.MIN_VALUE  获取计算机能存储的最小数值
+4.Boolean对象
+Boolean() / new Boolean()
+创建Boolean对象，同时将数据转为布尔型
+!!数据  将数据转为布尔型
+toString()  将布尔型数据转为字符串
+5.ES6
+   ECMAScript6
+ES2017  ES2018
+（1）块级作用域
+	使用let关键字声明变量，只能在块级作用域下访问;
+	块级作用域:{  } if 、else 、 while 、 do-while 、for里面大括号都是块级作用域
+	let关键字声明的变量不存在声明提升。
+（2）箭头函数
+是回调函数的另一种写法，和匿名函数不完全一致；
+     sort((a,b)=>{
+       return a-b
+});
+如果函数体中只有一行代码，并且是return形式，可以简化为sort((a,b)=>a-b);
+
+课后任务：
+（1）复习今天内容，整理思维导图
+（2）练习：
+	双色球：随机取1~33之间的6个数字，不能重复;并且从小到大排序；随机取1~16之间一个数字，和之前6个数字组成数组。
+（3）回顾服务器概念
+********：获取min~max之间的随机数:
+	var num=parseInt(Math.random()*(max-min+1)+min);
+
+
+
+
+ES6电子版
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
