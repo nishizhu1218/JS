@@ -1,0 +1,63 @@
+添加元素   数组[数组.length]=元素
+数组遍历   关联数组  for-in
+	索引数组   for-in  for循环
+数组API  toString()/join("")/concat(arr2,arr3...)/slice(start,end)/splice(start,count,value1,value2...)/reverse()/sort(function(a,b){return a-b;})    push()  往数组的末尾添加一个元素，返回数组的长度
+pop()   删除数组末尾的元素，返回删除的元素    unshift()  往数组的开头添加一个元素，返回数组的长度   shift()  删除数组开头的元素，返回删除的元素
+2.二维数组
+数组中的每个元素也是数组
+var arr=[[],[],[],[]...]
+访问数组中的元素  数组[下标][下标]
+3.字符串对象
+包装对象：让原始类型的数据也可以像引用类型一样，具有属性和方法。
+js提供了3种包装对象：String、Number、Boolean
+将任意的数据包装成字符串对象
+new String(true)  //"true"  ,返回object
+String(true) //"true", 返回类型为string
+字符串对象本质上还是字符串，在使用中和字符串没有任何区别。
+转义字符  \ 
+转换字符的意义（作用）
+\n  将字符n转换成换行符
+\" 将引号转成普通的字符
+\t 将字符t转换成制表符(tab键效果)
+...
+练习：打印出现  welcome to chi\na
+字符串中的API 
+toUpperCase()   将英文字母转为大写
+yoLowerCase()  将英文字母转为小写
+练习：初始化4个英文字母(aMtC)并保存到变量中，循环弹出提示框，在提示框中输入四个英文字母(不区分大小写),如果输入正确就结束循环
+06_checkcode.js   06_checkcode.html
+字符串.length  获取字符串的长度
+charAt()   获取下标对应的字符   字符串[下标]
+charCodeAt()   查看某个字符的Unicode编码
+练习：遍历字符串"javascript",获取a出现的次数
+indexOf()   查找某个字符第一次出现的下标，找不到返回-1
+lastIndexOf()  查找某个字符最后一次出现的下标，找不到返回-1
+练习：创建函数 checkEmail，传递1个参数（要检测的邮箱），如果字符串中含有@，返回true，否则返回false。
+checkEmail("134234@qq.com");
+slice(start,end) 截取字符串，start开始的下标，end结束的下标，不包含结束本身，如果为负数，表示倒数第n个
+练习：使用变量保存身份证号，获取其中的年月日以及性别。
+ "110230199802183572"->1998年02月18日 男
+substr(strat,count) 截取字符串，start开始的下标，count截取的长度；start为负值表示倒数第n个，count为空表示截取到最后
+练习：使用变量保存一个邮箱，分别获取邮箱的用户名和域名
+jerry1995@163.com.cn
+获取@的下标， 0~下标  下标下一位~最后
+练习：将一个英文单词的首字母转为大写，其余转为小写。
+"heLLo"  ->  "Hello"
+split()  按照指定的字符，将字符串转为数组。
+"how are you"
+3.匹配模式（了解）
+作用：用于查找、替换字符串
+replace(value1,value2)  查找并替换; value要查找的字符串, value2要替换的字符串。value1可以使用字符串，也可以使用正则表达式/china/ig     
+i->ignore 忽略大小写      g->global  全局查找
+match(value)   用于查找匹配的字符串，返回一个数组
+search(value)   用于查找满足条件的第一个字符的下标，如果找不到返回-1； 和indexOf功能类似。
+4.Math 对象
+Math对象不需要使用new关键字，
+课后任务：
+（1）复习今天内容，整理思维导图
+（2）练习：
+	将一句英文中每个单词的首字母转大写，其余的字母转小写；
+	"hoW  aRe yOu" ->  "How Are You"
+（3）预习js中的随机，Date对象.
+
+
